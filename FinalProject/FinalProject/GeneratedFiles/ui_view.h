@@ -144,7 +144,7 @@ public:
 
     void retranslateUi(QMainWindow *viewClass)
     {
-        viewClass->setWindowTitle(QApplication::translate("viewClass", "view", nullptr));
+        viewClass->setWindowTitle(QApplication::translate("viewClass", "Tetris", nullptr));
         label->setText(QApplication::translate("viewClass", "1", nullptr));
         label_2->setText(QApplication::translate("viewClass", "0", nullptr));
         label_3->setText(QString());

@@ -63,7 +63,7 @@ public:
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QStringLiteral("Dialog"));
-        Dialog->resize(400, 300);
+        Dialog->resize(400, 207);
         verticalLayout = new QVBoxLayout(Dialog);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         horizontalLayout_5 = new QHBoxLayout();
@@ -222,7 +222,7 @@ public:
 
     void retranslateUi(QDialog *Dialog)
     {
-        Dialog->setWindowTitle(QApplication::translate("Dialog", "Dialog", nullptr));
+        Dialog->setWindowTitle(QApplication::translate("Dialog", "Settings", nullptr));
         label_6->setText(QApplication::translate("Dialog", "Left", nullptr));
         lineEdit_5->setPlaceholderText(QApplication::translate("Dialog", "A", nullptr));
         label_7->setText(QApplication::translate("Dialog", "Down", nullptr));

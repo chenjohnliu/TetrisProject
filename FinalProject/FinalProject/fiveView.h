@@ -25,3 +25,11 @@ public:
 
     virtual void changeView(Model::State myState);
 };
+
+class B10432001 : public view
+{
+	//friend class Model;
+public:
+
+	virtual void changeView(Model::State myState);
+};

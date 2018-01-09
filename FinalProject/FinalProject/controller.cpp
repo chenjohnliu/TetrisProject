@@ -70,6 +70,12 @@ void Controller::userHasInput(inputInformation input)
     Model::State theState = gameModel->getState();
     if (theState == Model::playing)
     {
+        if (gameModel->level != gameModel->originalLevel)
+        {
+            timer->start(gameModel->getInterval());
+            gameModel->originalLevel = gameModel->level;
+        }
+
         switch (input)
         {
         case left:
@@ -87,7 +93,7 @@ void Controller::userHasInput(inputInformation input)
             gameModel->shiftRow();
 			if (gameModel->getShiftCount() >= gameModel->getLevelInterval())
 			{
-				gameModel->setLevel();
+				gameModel->changeLevel(++gameModel->level);
 				timer->start(gameModel->getInterval());
 			}
 			if (!gameModel->gameOver())
@@ -118,8 +124,8 @@ void Controller::userHasInput(inputInformation input)
                 gameModel->shiftRow();
 				if (gameModel->getShiftCount() >= gameModel->getLevelInterval())
 				{
-					gameModel->setLevel();
-					timer->start(gameModel->getInterval());
+                    gameModel->changeLevel(++gameModel->level);
+                    timer->start(gameModel->getInterval());
 				}
 				if (!gameModel->gameOver())
 				{

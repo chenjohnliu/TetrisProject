@@ -457,14 +457,14 @@ int Model::getShiftCount()
 	return shiftCounter;
 }
 
-void Model::setLevel()
-{
-	shiftCounter = 0;
-	level++;
-	dropInterval /= dropRate;
-	oneRowScore *= scoreRate;
-	changeLevel(level);
-}
+//void Model::setLevel()
+//{
+//	shiftCounter = 0;
+//	level++;
+//	dropInterval /= dropRate;
+//	oneRowScore *= scoreRate;
+//	changeLevel(level);
+//}
 
 void Model::init()
 {
@@ -486,7 +486,18 @@ int Model::getLevelInterval()
 }
 
 
-void Model::changeLevel(int level)
+void Model::changeLevel(int userLevel)
 {
-	myView->updateLevel(level);
+    shiftCounter = 0;
+    level = userLevel;
+    dropIntervalLevel1 = 1000;
+    oneRowScoreLevel1 = 100;
+    for (; userLevel > 1; userLevel--)
+    {
+        dropIntervalLevel1 /= dropRate;
+        oneRowScoreLevel1 *= scoreRate;
+    }
+    dropInterval = dropIntervalLevel1;
+    oneRowScore = oneRowScoreLevel1;
+    myView->updateLevel(level);
 }
