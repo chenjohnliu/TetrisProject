@@ -38,6 +38,7 @@ private:
     int right = Qt::Key_D;
 };
 
+extern int myLevelIndex;
 extern int myFall;
 extern int myRotate;
 extern int myDown;

@@ -11,7 +11,7 @@ int myRotate = Qt::Key_W;
 int myDown = Qt::Key_S;
 int myLeft = Qt::Key_A;
 int myRight = Qt::Key_D;
-
+int myLevelIndex = 0;
 
 ExternalDialog::ExternalDialog(view* parentView)
 {
@@ -34,6 +34,7 @@ ExternalDialog::ExternalDialog(view* parentView)
     myDialog.lineEdit_6->setText(QString(QChar::fromLatin1(char(myDown))));
     myDialog.lineEdit_4->setText(QString(QChar::fromLatin1(char(myRotate))));
     myDialog.lineEdit_7->setText(QString(QChar::fromLatin1(char(myFall))));
+    myDialog.comboBox->setCurrentIndex(myLevelIndex);
 
     dialog->setModal(true);
     dialog->show();
@@ -79,11 +80,13 @@ void ExternalDialog::resetSetting()
     myDown = down;
     myLeft = left;
     myRight = right;
+    myLevelIndex = 0;
     myDialog.lineEdit_5->setText(QString(QChar::fromLatin1(char(myLeft))));
     myDialog.lineEdit_3->setText(QString(QChar::fromLatin1(char(myRight))));
     myDialog.lineEdit_6->setText(QString(QChar::fromLatin1(char(myDown))));
     myDialog.lineEdit_4->setText(QString(QChar::fromLatin1(char(myRotate))));
     myDialog.lineEdit_7->setText(QString(QChar::fromLatin1(char(myFall))));
+    myDialog.comboBox->setCurrentIndex(myLevelIndex);
 }
 
 void ExternalDialog::customSetting()
@@ -116,8 +119,9 @@ void ExternalDialog::customSetting()
     myRotate = toupper(temp[0]);
     qDebug() << "rotate:" << myRotate;
     
-    levelIndex = myDialog.comboBox->currentIndex() + 1;
-    myMainWindow->callForChangeLevel(levelIndex);
+    levelIndex = myDialog.comboBox->currentIndex();
+    myLevelIndex = levelIndex;
+    myMainWindow->callForChangeLevel(levelIndex + 1);
 
     qDebug() << levelIndex;
     qDebug() << "Hello";
