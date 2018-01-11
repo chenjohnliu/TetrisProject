@@ -1,9 +1,19 @@
 <RCC>
-  <qresource prefix="/view">
-    <file>start.png</file>
-    <file>setting.png</file>
-    <file>cancel.png</file>
-    <file>pause.ico</file>
-    <file>undo.png</file>
-  </qresource>
+    <qresource prefix="/view">
+        <file>start.png</file>
+        <file>setting.png</file>
+        <file>cancel.png</file>
+        <file>pause.ico</file>
+        <file>undo.png</file>
+        <file>teacher.png</file>
+        <file>leaf.jpg</file>
+        <file>grass.jpg</file>
+        <file>greenHat.jpg</file>
+        <file>giveU.jpg</file>
+        <file>greenHat2.jpg</file>
+        <file>greenHat3.png</file>
+        <file>greenHat4.jpg</file>
+        <file>greenHat5.jpg</file>
+        <file>hehe.jpg</file>
+    </qresource>
 </RCC>
