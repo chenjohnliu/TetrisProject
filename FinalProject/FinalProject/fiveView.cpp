@@ -1,7 +1,114 @@
 #include "fiveView.h"
 
 
+void B10432014::changeView(Model::State myState)
+{
+	if (myState == Model::playing || myState == Model::idle)
+	{
+		for (int i = 0; i < ROW; i++)
+			for (int j = 0; j < COL; j++)
+			{
+				if (myModel->getFrame(i, j) == 1)
+				{
+					//board[i][j].setStyleSheet("QLabel{ background-color : black }");
+					board[i][j].setStyleSheet(QString("border-image:url(:/view/teacher.png);"));
+				}
+				else if (myModel->getFrame(i, j) == 0)
+				{
+					//board[i][j].setStyleSheet("QLabel{ background-color : darkGray }");
+					if (((i != 0) && (i % 4 == 0)) && j == 1) board[i][j].setStyleSheet(QString("border-image:url(:/view/greenHat.jpg);"));
+					else if (((i != 0) && (i % 4 == 0)) && j == 5) board[i][j].setStyleSheet(QString("border-image:url(:/view/giveU.jpg);"));
+					else if (((i != 0) && (i % 4 == 0)) && j == 10) board[i][j].setStyleSheet(QString("border-image:url(:/view/greenHat2.jpg);"));
+					else if (((i != 0) && (i % 2 == 0)) && j == 3) board[i][j].setStyleSheet(QString("border-image:url(:/view/greenHat3.png);"));
+					else if (((i != 0) && (i % 2 == 0)) && j == 5) board[i][j].setStyleSheet(QString("border-image:url(:/view/greenHat4.jpg);"));
+					else if (((i != 0) && (i % 2 == 0)) && j == 7) board[i][j].setStyleSheet(QString("border-image:url(:/view/greenHat5.jpg);"));
 
+					else board[i][j].setStyleSheet("QLabel{ background-color : darkGray }");
+				}
+				else if (myModel->getFrame(i, j) == 2)
+				{
+					board[i][j].setStyleSheet("QLabel{ background-color : blue }");
+				}
+				else board[i][j].setStyleSheet("QLabel{ background-color : green }");
+			}
+	}
+
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 4; j++)
+		{
+			preview[i][j].setStyleSheet("QLabel{ background-color : darkGray }");
+		}
+
+	switch (myModel->getRandom())
+	{
+	case 0:
+	{
+		preview[0][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[1][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[3][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		break;		
+	}				
+					
+	case 1:			
+	{				
+		preview[1][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][2].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][3].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		break;		
+	}				
+					
+	case 2:			
+	{				
+		preview[1][2].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][2].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][0].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		break;		
+	}				
+					
+	case 3:			
+	{				
+		preview[1][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][2].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[1][2].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		break;	
+	}			
+				
+	case 4:		
+	{			
+		preview[2][0].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[1][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[1][2].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		break;		
+	}				
+					
+	case 5:			
+	{				
+		preview[2][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][2].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[1][2].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][3].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		break;		
+	}				
+					
+	case 6:			
+	{				
+		preview[1][0].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[1][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][1].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		preview[2][2].setStyleSheet(QString("border-image:url(:/view/hehe.jpg);"));
+		break;												    
+	}
+
+	default:
+		cout << "ERROR NEW BLOCK TYPE!";
+		break;
+	}
+}
 
 void B10432040::changeView(Model::State myState)
 {
@@ -10,7 +117,7 @@ void B10432040::changeView(Model::State myState)
 		for (int i = 0; i < ROW; i++)
 			for (int j = 0; j < COL; j++)
 			{
-				if (myModel->getFrame(i,j) == 1)
+				if (myModel->getFrame(i, j) == 1)
 				{
 					board[i][j].setStyleSheet("QLabel{ background-color : blue }");
 				}
@@ -103,7 +210,7 @@ void B10432040::changeView(Model::State myState)
 	}
 }
 
-void B10432014::changeView(Model::State myState)
+void B10432007::changeView(Model::State myState)
 {
 	if (myState == Model::playing || myState == Model::idle)
 	{
@@ -112,11 +219,11 @@ void B10432014::changeView(Model::State myState)
 			{
 				if (myModel->getFrame(i, j) == 1)
 				{
-					board[i][j].setStyleSheet("QLabel{ background-color : black }");
+					board[i][j].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 100%) }");
 				}
 				else if (myModel->getFrame(i, j) == 0)
 				{
-					board[i][j].setStyleSheet("QLabel{ background-color : darkGray }");
+					board[i][j].setStyleSheet("QLabel{ background-color : rgba(199, 237, 204, 100%) }");
 				}
 				else if (myModel->getFrame(i, j) == 2)
 				{
@@ -129,178 +236,78 @@ void B10432014::changeView(Model::State myState)
 	for (int i = 0; i < 4; i++)
 		for (int j = 0; j < 4; j++)
 		{
-			preview[i][j].setStyleSheet("QLabel{ background-color : darkGray }");
+			preview[i][j].setStyleSheet("QLabel{ background-color : rgba(199, 237, 204, 70%) }");
 		}
 
 	switch (myModel->getRandom())
 	{
 	case 0:
 	{
-		preview[0][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[1][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[3][1].setStyleSheet("QLabel{ background-color : cyan }");
-		break;												    	 
-	}														    	 
-															    	 
-	case 1:													    	 
-	{														    	 
-		preview[1][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][2].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][3].setStyleSheet("QLabel{ background-color : cyan }");
-		break;												    	 
-	}														    	 
-															    	 
-	case 2:													    	 
-	{														    	 
-		preview[1][2].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][2].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][0].setStyleSheet("QLabel{ background-color : cyan }");
-		break;												    	 
-	}														    	 
-															    	 
-	case 3:													    	 
-	{														    	 
-		preview[1][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][2].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[1][2].setStyleSheet("QLabel{ background-color : cyan }");
-		break;												    	 
-	}														    	 
-															    	 
-	case 4:													    	 
-	{														    	 
-		preview[2][0].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[1][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[1][2].setStyleSheet("QLabel{ background-color : cyan }");
-		break;														 
-	}																 
-																	 
-	case 5:													
-	{														
-		preview[2][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][2].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[1][2].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][3].setStyleSheet("QLabel{ background-color : cyan }");
-		break;												    	 
-	}														    	 
-															    	 
-	case 6:													    	 
-	{														    	 
-		preview[1][0].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[1][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][1].setStyleSheet("QLabel{ background-color : cyan }");
-		preview[2][2].setStyleSheet("QLabel{ background-color : cyan }");
-		break;												    
+		preview[0][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[1][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[3][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		break;
+	}
+
+	case 1:
+	{
+		preview[1][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][3].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		break;
+	}
+
+	case 2:
+	{
+		preview[1][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][0].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		break;
+	}
+
+	case 3:
+	{
+		preview[1][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[1][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		break;
+	}
+
+	case 4:
+	{
+		preview[3][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[3][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][3].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		break;
+	}
+
+	case 5:
+	{
+		preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[1][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][3].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		break;
+	}
+
+	case 6:
+	{
+		preview[1][0].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[1][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
+		break;
 	}
 
 	default:
 		cout << "ERROR NEW BLOCK TYPE!";
 		break;
 	}
-}
-
-void B10432007::changeView(Model::State myState)
-{
-    if (myState == Model::playing || myState == Model::idle)
-    {
-        for (int i = 0; i < ROW; i++)
-            for (int j = 0; j < COL; j++)
-            {
-                if (myModel->getFrame(i, j) == 1)
-                {
-                    board[i][j].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 100%) }");
-                }
-                else if (myModel->getFrame(i, j) == 0)
-                {
-                    board[i][j].setStyleSheet("QLabel{ background-color : rgba(199, 237, 204, 100%) }");
-                }
-                else if (myModel->getFrame(i, j) == 2)
-                {
-                    board[i][j].setStyleSheet("QLabel{ background-color : blue }");
-                }
-                else board[i][j].setStyleSheet("QLabel{ background-color : green }");
-            }
-    }
-
-    for (int i = 0; i < 4; i++)
-        for (int j = 0; j < 4; j++)
-        {
-            preview[i][j].setStyleSheet("QLabel{ background-color : rgba(199, 237, 204, 70%) }");
-        }
-
-    switch (myModel->getRandom())
-    {
-    case 0:
-    {
-        preview[0][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[1][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[3][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        break;
-    }
-
-    case 1:
-    {
-        preview[1][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][3].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        break;
-    }
-
-    case 2:
-    {
-        preview[1][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][0].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        break;
-    }
-
-    case 3:
-    {
-        preview[1][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[1][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        break;
-    }
-
-    case 4:
-    {
-        preview[3][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[3][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][3].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        break;
-    }
-
-    case 5:
-    {
-        preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[1][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][3].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        break;
-    }
-
-    case 6:
-    {
-        preview[1][0].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[1][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][1].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        preview[2][2].setStyleSheet("QLabel{ background-color : rgba(0, 127, 255, 70%) }");
-        break;
-    }
-
-    default:
-        cout << "ERROR NEW BLOCK TYPE!";
-        break;
-    }
 }
 
 void B10432001::changeView(Model::State myState)
